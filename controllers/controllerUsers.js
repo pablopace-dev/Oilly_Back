@@ -293,7 +293,8 @@ const validateJWT = async ({ body }, res) => {
             });
 
         } catch (e) {
-            console.log('catchError en validateJWT: ', e)
+            if (!e.toString().includes('TokenExpiredError'))
+                console.log('catchError en validateJWT: ', e)
 
             return res.status(500).json({
                 ok: false,
