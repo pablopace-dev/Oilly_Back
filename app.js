@@ -22,6 +22,8 @@ app.use('/api/places', require('./routes/placesRouters'));      //Places
 //Awake
 app.use('/wakeup', (req, res) => {
 
+    console.log("I'm awake (Oilly - Back)");
+
     res.status(200).json({
         ok: true,
         msg: `I'm awake (Oilly - Back)`
