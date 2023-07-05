@@ -19,6 +19,18 @@ app.use('/api/rewards', require('./routes/routerRewards'));     //Rewards
 app.use('/api/comments', require('./routes/routerComm'));       //Comments
 app.use('/api/places', require('./routes/placesRouters'));      //Places
 
+//Awake
+app.use('/wakeup', (req, res) => {
+
+    console.log("I'm awake (Oilly - Back)");
+
+    res.status(200).json({
+        ok: true,
+        msg: `I'm awake (Oilly - Back)`
+    });
+
+});
+
 //404
 app.use((req, res) => { res.status(404).send({ msg: `Ruta no encontrada: ${req.url}` }); });
 

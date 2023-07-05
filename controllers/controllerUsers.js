@@ -67,10 +67,10 @@ const createUser = async ({ body }, res) => {
         const data = await modelCreateUser(body);
 
         if (data) {
-
+            
             const user = {
-                id: data.user_id,
-                email: data.email
+                id: data[0].user_id,
+                email: data[0].email
             }
             const token = await generateJwt(user);
 
@@ -293,7 +293,8 @@ const validateJWT = async ({ body }, res) => {
             });
 
         } catch (e) {
-            console.log('catchError en validateJWT: ', e)
+            if (!e.toString().includes('TokenExpiredError'))
+                console.log('catchError en validateJWT: ', e)
 
             return res.status(500).json({
                 ok: false,
